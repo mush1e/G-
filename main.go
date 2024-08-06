@@ -11,6 +11,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/joho/godotenv"
+	"github.com/mush1e/g++/routes"
 )
 
 func main() {
@@ -26,12 +27,13 @@ func main() {
 		port = ":" + port
 	}
 
-	app := fiber.New(fiber.Config {
-		IdleTimeout : 5 * time.Second,
+	app := fiber.New(fiber.Config{
+		IdleTimeout: 5 * time.Second,
 	})
 
 	app.Use(compress.New())
 
+	routes.SetRoutes(app)
 	// Start server and listen for shutdown
 
 	go func() {
