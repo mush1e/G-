@@ -16,7 +16,7 @@ import (
 
 func main() {
 	env := godotenv.Load()
-	if env == nil {
+	if env != nil {
 		panic("Cannot find environment variables!")
 	}
 	port := os.Getenv("PORT")
